@@ -5,6 +5,7 @@ import numpy as np
 import pickle
 import bz2
 import _pickle as cPickle
+import traceback
 
 app=Flask(__name__)
 
@@ -14,15 +15,15 @@ def imdb():
 
 @app.route("/movie_title", methods=['POST','GET'])
 def movie_title():
-    if request.method=='POST':
+    try:
         title=request.form['title']
         title=title.title()
         match_movies = movie_titles.loc[movie_titles.str.contains(title, case=False)]
         final_title=match_movies.iloc[0]
         index=int(movie_titles.index[movie_titles==final_title][0])
         return recommend(index)
-    else:
-        return redirect(url_for('/'))
+    except:
+        return "There is error"
 
 def recommend(index):
     recommend_list=[]
