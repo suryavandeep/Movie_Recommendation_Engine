@@ -23,7 +23,7 @@ def movie_title():
         index=int(movie_titles.index[movie_titles==final_title][0])
         return recommend(index)
     except:
-        return traceback.print_exc()
+        return str(traceback.format_exc())
 
 def recommend(index):
     recommend_list=[]
