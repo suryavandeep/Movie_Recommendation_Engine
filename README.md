@@ -1,7 +1,7 @@
 # Movie_Recommendation_Engine
 Movie_Recommendation_Engine  based on  the IMDB Movies Dataset
 
-#####This IMDB Dataset contains columns the following columns : 'index', 'budget', 'genres', 'homepage', 'id', 'keywords','original_language', 'original_title', 'overview', 'popularity', 'production_companies', 'production_countries', 'release_date', 'revenue', 'runtime', 'spoken_languages', 'status', 'tagline', 'title', 'vote_average', 'vote_count', 'cast', 'crew', 'director'
+##### This IMDB Dataset contains columns the following columns : 'index', 'budget', 'genres', 'homepage', 'id', 'keywords','original_language', 'original_title', 'overview', 'popularity', 'production_companies', 'production_countries', 'release_date', 'revenue', 'runtime', 'spoken_languages', 'status', 'tagline', 'title', 'vote_average', 'vote_count', 'cast', 'crew', 'director'
 
 ##### I combined some main columns into a single feature. And than used that Sinle Feature to find the similarity scores for all the movies.
 
