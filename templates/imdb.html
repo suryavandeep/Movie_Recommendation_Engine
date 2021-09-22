@@ -7,14 +7,16 @@
             <input type='text' id='title' name='title' required='required'><br><br>
             <input class='a' type='submit' value='Submit'>
         </form>
-            {% set message1="Our top 10 movie recommendations based on the title :" %}
+        {% if check=='pass' %}
+            {% set message1="Our top 10 movie recommendations based on the title : '"+movie+"'" %}
             <p class='message1'>{{ message1 }}</p>
             <br>
             {% for i in recommendations %}
                 <p class='titles_list'>({{ loop.index }}) {{ (i[0]) }}</p><br>
             {% endfor %}
-
-            {{ message }}
+        {% elif check=='fail' %}
+            <p class='message1'>{{ message }}</p>
+        {% endif %}
         </ul>
     </body>
 </html>
