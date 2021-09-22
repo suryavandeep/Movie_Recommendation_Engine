@@ -7,6 +7,12 @@ import bz2
 import _pickle as cPickle
 import traceback
 
+#loading the compressed pickle file using 'bz2' module
+pickle_data=bz2.BZ2File('compressed_cos_similarity.pkl','rb')
+cosine_data=cPickle.load(pickle_data)
+#loading the pickled file movie_index.pkl
+movie_titles=pickle.load(open('movie_index.pkl','rb'))
+
 app=Flask(__name__)
 
 @app.route("/",methods=['POST','GET'])
@@ -36,9 +42,4 @@ def recommend(index):
     return render_template('imdb.html',recommendations=recommend_list)
 
 if __name__=="__main__":
-    #loading the compressed pickle file using 'bz2' module
-    pickle_data=bz2.BZ2File('compressed_cos_similarity.pkl','rb')
-    cosine_data=cPickle.load(pickle_data)
-    #loading the pickled file movie_index.pkl
-    movie_titles=pickle.load(open('movie_index.pkl','rb'))
     app.run(debug=True)
