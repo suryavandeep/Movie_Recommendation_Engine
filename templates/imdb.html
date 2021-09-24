@@ -1,4 +1,8 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    </head>
     <body>
         <br><h1>Welcome to the Movie Recommendation Engine</h1><br>
 
@@ -11,13 +15,22 @@
             {% set message1="Our top 10 movie recommendations based on the title : '"+movie+"'" %}
             <p class='message1'>{{ message1 }}</p>
             <br>
-            {% for i in recommendations %}
-                <p class='titles_list'>({{ loop.index }}) {{ (i[0]) }}</p><br>
+            {% for i,j in zip(recommendations,poster_list) %}
+                <div>
+                    <p class='titles_list'>({{ loop.index }}) {{ (i) }}</p>
+                    <img class='poster_style' src='http://image.tmdb.org/t/p/w500{{j}}'>
+                </div>
             {% endfor %}
         {% elif check=='fail' %}
             <p class='message1'>{{ message }}</p>
         {% endif %}
-        </ul>
+
+        <div class="footer-basic">
+            <footer>
+                <div class="social"><a href="https://github.com/suryavandeep"><i class="icon ion-social-github"></i></a><a href="https://www.linkedin.com/in/deepak-soni-400561166/"><i class="icon ion-social-linkedin"></i></a></div>
+                <p class="copyright">Deployed by : Deepak Soni</p>
+            </footer>
+        </div>
     </body>
 </html>
 
@@ -68,10 +81,16 @@ input[type=submit]:hover {
 
 }
 
-li{
-    width:fit-content;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    padding: 2px;
+.poster_style{
+        width: 375px;
+        height: 563px;
+        margin: 10px;
+        border-radius: 7px;
+        box-shadow: 0px 0px 5px grey;
+        background-size: cover;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
 }
 
 h1{
@@ -106,7 +125,7 @@ h1{
 }
 
 .titles_list{
-    width:fit-content;
+    width:50%;
     background-image: linear-gradient(to bottom right,#c8e243 , #45c7bc);
     margin:8px 0;
     border:none;
@@ -125,21 +144,47 @@ h1{
     
 }
 
+
 body{
     background-image: linear-gradient(to right,  #2C3E50 , #000000);
     text-align: center;
 }
 
-.foooter-style{
-    background-image: linear-gradient(to bottom right,#ba8b02,#181818);
-    border-radius: 10px;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    display: inline-block;
-    position:relative;
-    padding:1%;
-    color:rgb(242, 247, 222);
-    font-size: 16px;
-    text-transform: uppercase;
-    overflow: hidden;
+.footer-basic {
+  padding:40px 0;
+  background-image: linear-gradient(to right,  #2C3E50 , #000000);
+  color:ivory;
 }
+
+.footer-basic .social {
+  text-align:center;
+}
+
+.footer-basic .social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin:0 8px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-basic .social > a:hover {
+  opacity:0.9;
+}
+
+.footer-basic .copyright {
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align:center;
+  color:#aaa;
+  font-size: 14px;
+  margin-bottom:0;
+}
+
+
 </style>
